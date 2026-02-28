@@ -2,175 +2,150 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const scrolled = ref(false)
-const mobileOpen = ref(false)
+const menuOpen = ref(false)
 
-const handleScroll = () => { scrolled.value = window.scrollY > 40 }
-onMounted(() => window.addEventListener('scroll', handleScroll))
-onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+function onScroll() { scrolled.value = window.scrollY > 40 }
 
-const links = [
-  { label: 'Über mich', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projekte', href: '#projects' },
-  { label: 'Kontakt', href: '#contact' },
-]
-
-const closeMenu = () => { mobileOpen.value = false }
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <nav id="navbar" :class="{ scrolled }">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Yusuf Ahmed – Webentwickler">
-        Yusuf<span class="dot">.</span>
+  <header id="navbar" :class="{ scrolled }" role="banner">
+    <div class="nav-inner container">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Yusuf Ahmed – Startseite">
+        Yusuf<span class="logo-dot">.</span>
       </a>
 
-      <ul class="nav-links" role="navigation" aria-label="Hauptnavigation">
-        <li v-for="link in links" :key="link.href">
-          <a :href="link.href" class="nav-link" @click="closeMenu">{{ link.label }}</a>
-        </li>
-      </ul>
+      <!-- Desktop nav -->
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#about"    id="nav-about">Über mich</a>
+        <a href="#skills"   id="nav-skills">Skills</a>
+        <a href="#projects" id="nav-projects">Projekte</a>
+        <a href="#contact"  id="nav-contact">Kontakt</a>
+      </nav>
 
-      <a
-        href="#contact"
-        class="nav-cta"
-        id="nav-cta-btn"
-        aria-label="Projekt anfragen"
-      >
+      <!-- CTA -->
+      <a href="#contact" class="btn btn-primary nav-cta" id="nav-cta-btn">
         Projekt anfragen
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
 
+      <!-- Mobile burger -->
       <button
         class="burger"
-        id="burger-btn"
-        :aria-expanded="mobileOpen"
-        aria-label="Menü öffnen/schließen"
-        @click="mobileOpen = !mobileOpen"
+        id="mobile-menu-btn"
+        :aria-expanded="menuOpen"
+        aria-label="Menü öffnen"
+        @click="menuOpen = !menuOpen"
       >
-        <span :class="{ open: mobileOpen }"></span>
-        <span :class="{ open: mobileOpen }"></span>
-        <span :class="{ open: mobileOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
       </button>
     </div>
 
-    <div class="mobile-menu" :class="{ open: mobileOpen }" role="navigation" aria-label="Mobile Navigation">
-      <a v-for="link in links" :key="link.href" :href="link.href" @click="closeMenu">{{ link.label }}</a>
-      <a href="#contact" class="mobile-cta" @click="closeMenu">Projekt anfragen</a>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" :class="{ open: menuOpen }" role="dialog" aria-modal="true">
+      <nav>
+        <a href="#about"    @click="menuOpen=false">Über mich</a>
+        <a href="#skills"   @click="menuOpen=false">Skills</a>
+        <a href="#projects" @click="menuOpen=false">Projekte</a>
+        <a href="#contact"  @click="menuOpen=false">Kontakt</a>
+        <a href="#contact" class="btn btn-primary" style="justify-content:center;margin-top:8px" @click="menuOpen=false">
+          Projekt anfragen
+        </a>
+      </nav>
     </div>
-  </nav>
+  </header>
 </template>
 
 <style scoped>
 #navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  transition: all .3s var(--ease, cubic-bezier(.4,0,.2,1));
+  transition: background .3s, border-color .3s, backdrop-filter .3s;
 }
 #navbar.scrolled {
-  background: rgba(6,8,17,.9);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 24px rgba(0,0,0,.4);
+  background: rgba(8,8,8,.92);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(20px);
 }
+
 .nav-inner {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 0 40px;
+  display: flex; align-items: center; gap: 48px;
   height: 72px;
-  max-width: 1300px;
-  margin: 0 auto;
 }
-.nav-logo {
-  font-size: 22px;
-  font-weight: 800;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-right: auto;
+
+.logo {
+  font-size: 22px; font-weight: 800;
+  letter-spacing: -.03em;
+  color: var(--text);
+  flex-shrink: 0;
 }
-.dot { color: var(--primary); -webkit-text-fill-color: var(--primary); }
+.logo-dot { color: var(--orange); }
+
 .nav-links {
-  display: flex;
-  gap: 4px;
-  list-style: none;
+  display: flex; gap: 36px;
+  flex: 1;
 }
-.nav-link {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+.nav-links a {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
   color: var(--text-muted);
-  transition: all .25s;
+  transition: color .2s;
+  position: relative;
 }
-.nav-link:hover { color: var(--text); background: var(--surface); }
-.nav-cta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #fff;
-  transition: all .3s;
-  white-space: nowrap;
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--orange);
+  transition: width .25s;
 }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,.4); }
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta { padding: 10px 22px; font-size: 12px; flex-shrink: 0; }
+
+/* Burger */
 .burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
+  flex-direction: column; gap: 5px;
+  background: none; border: none;
+  cursor: pointer; padding: 6px;
+  margin-left: auto;
 }
 .burger span {
-  width: 22px; height: 2px;
+  display: block; width: 22px; height: 2px;
   background: var(--text);
-  border-radius: 2px;
-  transition: all .3s;
-  display: block;
+  transition: all .3s var(--ease);
+  border-radius: 1px;
 }
-.burger span.open:nth-child(1) { transform: rotate(45deg) translateY(9px); }
+.burger span.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger span.open:nth-child(2) { opacity: 0; }
-.burger span.open:nth-child(3) { transform: rotate(-45deg) translateY(-9px); }
+.burger span.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile menu */
 .mobile-menu {
   display: none;
-  flex-direction: column;
-  padding: 16px 24px 24px;
-  gap: 4px;
-  border-top: 1px solid var(--border);
-  background: rgba(6,8,17,.97);
-  backdrop-filter: blur(24px);
+  background: var(--surface);
+  border-top: 1px solid var(--border-light);
+  padding: 24px;
 }
-.mobile-menu.open { display: flex; }
+.mobile-menu.open { display: block; }
+.mobile-menu nav { display: flex; flex-direction: column; gap: 16px; }
 .mobile-menu a {
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-weight: 500;
+  font-size: 15px; font-weight: 600;
   color: var(--text-muted);
-  transition: all .25s;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color .2s;
 }
-.mobile-menu a:hover { color: var(--text); background: var(--surface); }
-.mobile-cta {
-  margin-top: 8px;
-  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-  color: #fff !important;
-  text-align: center;
-  font-weight: 700 !important;
-}
+.mobile-menu a:hover { color: var(--orange); }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .burger { display: flex; }
-  .nav-inner { padding: 0 20px; }
 }
 </style>
