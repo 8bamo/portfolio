@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 
 // Typewriter effect
-const phrases = [
+const phrases: string[] = [
   'Frontend Entwickler',
   'TYPO3 Spezialist',
   'Shopify Experte',
@@ -11,13 +11,12 @@ const phrases = [
   'UI/UX Enthusiast',
 ]
 const typed = ref('')
-const cursorVisible = ref(true)
 let phraseIdx = 0
 let charIdx = 0
 let deleting = false
 
 function typeLoop() {
-  const current = phrases[phraseIdx]
+  const current: string = phrases[phraseIdx] ?? ''
   if (!deleting) {
     typed.value = current.slice(0, ++charIdx)
     if (charIdx === current.length) {
@@ -37,20 +36,27 @@ function typeLoop() {
 
 // Stat counter animation
 const statRefs = ref<HTMLElement[]>([])
+
+function pushStatRef(el: unknown) {
+  if (el instanceof HTMLElement) statRefs.value.push(el)
+}
+
 function animateStats() {
   statRefs.value.forEach(el => {
-    const target = parseInt(el.dataset.target || '0')
-    let current = 0
+    const target = parseInt(el.dataset['target'] ?? '0', 10)
+    let count = 0
     const step = Math.max(1, Math.ceil(target / 40))
     const t = setInterval(() => {
-      current = Math.min(current + step, target)
-      el.textContent = current + '+'
-      if (current >= target) clearInterval(t)
+      count = Math.min(count + step, target)
+      el.textContent = count + '+'
+      if (count >= target) clearInterval(t)
     }, 35)
   })
 }
 
 // Particle canvas
+interface Particle { x: number; y: number; vx: number; vy: number; r: number; alpha: number }
+
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
 function initParticles() {
@@ -60,7 +66,7 @@ function initParticles() {
   let W = canvas.width = canvas.offsetWidth
   let H = canvas.height = canvas.offsetHeight
 
-  const particles: { x: number; y: number; vx: number; vy: number; r: number; alpha: number }[] = []
+  const particles: Particle[] = []
   for (let i = 0; i < 80; i++) {
     particles.push({
       x: Math.random() * W, y: Math.random() * H,
@@ -71,7 +77,7 @@ function initParticles() {
 
   const draw = () => {
     ctx.clearRect(0, 0, W, H)
-    particles.forEach(p => {
+    for (const p of particles) {
       p.x += p.vx; p.y += p.vy
       if (p.x < 0 || p.x > W) p.vx *= -1
       if (p.y < 0 || p.y > H) p.vy *= -1
@@ -79,17 +85,19 @@ function initParticles() {
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
       ctx.fillStyle = `rgba(99,102,241,${p.alpha})`
       ctx.fill()
-    })
+    }
     // draw connections
     for (let i = 0; i < particles.length; i++) {
+      const pi = particles[i] as Particle
       for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x
-        const dy = particles[i].y - particles[j].y
+        const pj = particles[j] as Particle
+        const dx = pi.x - pj.x
+        const dy = pi.y - pj.y
         const dist = Math.sqrt(dx * dx + dy * dy)
         if (dist < 120) {
           ctx.beginPath()
-          ctx.moveTo(particles[i].x, particles[i].y)
-          ctx.lineTo(particles[j].x, particles[j].y)
+          ctx.moveTo(pi.x, pi.y)
+          ctx.lineTo(pj.x, pj.y)
           ctx.strokeStyle = `rgba(99,102,241,${0.08 * (1 - dist / 120)})`
           ctx.lineWidth = 0.8
           ctx.stroke()
@@ -157,17 +165,17 @@ onMounted(() => {
 
         <div class="hero-stats" aria-label="Erfahrung in Zahlen">
           <div class="stat">
-            <span class="stat-num" ref="el => el && statRefs.push(el as HTMLElement)" data-target="10">10+</span>
+            <span class="stat-num" :ref="pushStatRef" data-target="10">10+</span>
             <span class="stat-label">Jahre Erfahrung</span>
           </div>
           <div class="stat-div"></div>
           <div class="stat">
-            <span class="stat-num" ref="el => el && statRefs.push(el as HTMLElement)" data-target="50">50+</span>
+            <span class="stat-num" :ref="pushStatRef" data-target="50">50+</span>
             <span class="stat-label">Projekte</span>
           </div>
           <div class="stat-div"></div>
           <div class="stat">
-            <span class="stat-num" ref="el => el && statRefs.push(el as HTMLElement)" data-target="15">15+</span>
+            <span class="stat-num" :ref="pushStatRef" data-target="15">15+</span>
             <span class="stat-label">Technologien</span>
           </div>
         </div>
