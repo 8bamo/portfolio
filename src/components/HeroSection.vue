@@ -113,7 +113,6 @@ onUnmounted(() => window.removeEventListener('mousemove', onMouse))
           <div class="mc-header">
             <div class="mc-avatar">
               <span>YA</span>
-              <div class="avatar-ring"></div>
             </div>
             <div class="mc-info">
               <div class="mc-class-badge">WEB DEVELOPER</div>
@@ -428,16 +427,6 @@ onUnmounted(() => window.removeEventListener('mousemove', onMouse))
 
 /* ── GAMING ELEMENTS ── */
 
-/* Avatar glow ring */
-.avatar-ring {
-  position: absolute; inset: -4px;
-  border-radius: 20px;
-  background: conic-gradient(var(--orange), #fdba74, var(--orange));
-  z-index: -1;
-  animation: ring-spin 3s linear infinite;
-  opacity: .7;
-}
-@keyframes ring-spin { to { transform: rotate(360deg); } }
 
 /* Class badge */
 .mc-class-badge {
