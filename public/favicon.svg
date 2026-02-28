@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- Subtle inner glow -->
+  <rect width="64" height="64" rx="14" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- "Y" letter -->
+  <text
+    x="11"
+    y="46"
+    font-family="Outfit, Arial, sans-serif"
+    font-size="34"
+    font-weight="900"
+    fill="url(#text)"
+    letter-spacing="-1"
+  >YA</text>
+
+  <!-- Bottom accent dot -->
+  <circle cx="52" cy="54" r="4" fill="rgba(255,255,255,0.5)"/>
+</svg>
