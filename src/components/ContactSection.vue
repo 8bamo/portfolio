@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const form = ref({ name: '', email: '', subject: '', message: '' })
-const state = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
+const CONTACT_EMAIL = 'yusuf_ahmed@gmx.de'
+const SUBJECT = 'Webseiten anfrage'
+
+const form = ref({ name: '', email: '', message: '' })
+const state = ref<'idle' | 'success'>('idle')
 
 function handleSubmit() {
-  state.value = 'sending'
-  // Simulate submission (replace with real endpoint / EmailJS etc.)
-  setTimeout(() => { state.value = 'success' }, 1400)
+  const body = `Name: ${form.value.name}\nE-Mail: ${form.value.email}\n\n${form.value.message}`
+  const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(body)}`
+  window.location.href = mailtoLink
+  state.value = 'success'
 }
 </script>
 
@@ -32,18 +36,11 @@ function handleSubmit() {
           </p>
 
           <address class="contact-cards" style="font-style:normal">
-            <a href="tel:+491234567890" class="contact-card glass" id="contact-phone">
-              <div class="cc-icon" aria-hidden="true">📞</div>
-              <div class="cc-body">
-                <span class="cc-label">Telefon</span>
-                <span class="cc-val">Auf Anfrage</span>
-              </div>
-            </a>
-            <a href="mailto:kontakt@yusuf-ahmed.dev" class="contact-card glass" id="contact-email">
+            <a :href="`mailto:${CONTACT_EMAIL}`" class="contact-card glass" id="contact-email">
               <div class="cc-icon" aria-hidden="true">✉️</div>
               <div class="cc-body">
                 <span class="cc-label">E-Mail</span>
-                <span class="cc-val">kontakt@yusuf-ahmed.dev</span>
+                <span class="cc-val">{{ CONTACT_EMAIL }}</span>
               </div>
             </a>
             <div class="contact-card glass" id="contact-location">
@@ -108,14 +105,8 @@ function handleSubmit() {
             </div>
           </div>
           <div class="form-group">
-            <label for="cf-subject">Betreff</label>
-            <input
-              v-model="form.subject"
-              type="text"
-              id="cf-subject"
-              name="subject"
-              placeholder="z.B. Shopify-Shop für mein Unternehmen"
-            />
+            <label>Betreff</label>
+            <div class="subject-fixed" aria-label="Betreff (vorausgefüllt)">{{ SUBJECT }}</div>
           </div>
           <div class="form-group">
             <label for="cf-message">Ihre Nachricht *</label>
@@ -133,21 +124,16 @@ function handleSubmit() {
             type="submit"
             class="btn btn-primary btn-full"
             id="form-submit-btn"
-            :disabled="state === 'sending'"
           >
             <span v-if="state === 'idle'">
-              Nachricht senden
+              E-Mail senden
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </span>
-            <span v-else-if="state === 'sending'">Wird gesendet…</span>
-            <span v-else-if="state === 'success'">✅ Nachricht gesendet!</span>
+            <span v-else>✅ E-Mail-Programm wird geöffnet…</span>
           </button>
 
           <p v-if="state === 'success'" class="form-success" role="status">
-            Vielen Dank! Ich melde mich innerhalb von 24 Stunden bei Ihnen.
-          </p>
-          <p v-if="state === 'error'" class="form-error" role="alert">
-            Fehler beim Senden. Bitte schreiben Sie mir direkt an kontakt@yusuf-ahmed.dev.
+            ✅ Ihr E-Mail-Programm öffnet sich mit der vorausgefüllten Nachricht. Vielen Dank!
           </p>
         </form>
       </div>
@@ -292,6 +278,16 @@ function handleSubmit() {
   text-align: center;
 }
 button:disabled { opacity: .7; cursor: not-allowed; }
+
+.subject-fixed {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 @media (max-width: 1024px) {
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
