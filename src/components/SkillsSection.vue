@@ -143,14 +143,25 @@ const techPills = [
   margin-bottom: 48px;
 }
 .skill-cat {
-  padding: 32px;
+  padding: 28px;
   border-radius: var(--radius);
-  transition: all .3s var(--ease);
+  transition: all .35s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+}
+.skill-cat::before {
+  content: 'UNLOCKED ✓';
+  position: absolute; top: 12px; right: 14px;
+  font-family: var(--mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--green);
+  opacity: .6;
 }
 .skill-cat:hover {
-  border-color: var(--border-glow);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-4px);
+  border-color: rgba(249,115,22,.35);
+  box-shadow: var(--glass-shadow-lg), 0 0 24px rgba(249,115,22,.12);
+  transform: translateY(-6px) scale(1.01);
 }
 .cat-icon { font-size: 2rem; margin-bottom: 12px; }
 .cat-title {
@@ -170,16 +181,23 @@ const techPills = [
   font-weight: 500;
 }
 .skill-bar {
-  height: 5px;
-  background: rgba(255,255,255,.06);
+  height: 7px;
+  background: rgba(0,0,0,.08);
   border-radius: 100px;
   overflow: hidden;
 }
 .skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, #f97316, #fdba74, #f97316);
+  background-size: 200% 100%;
   border-radius: 100px;
-  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  transition: width 1.3s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px rgba(249,115,22,.4);
+  animation: bar-shine 2.5s linear infinite;
+}
+@keyframes bar-shine {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 /* Tech cloud */

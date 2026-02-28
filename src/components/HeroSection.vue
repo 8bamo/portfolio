@@ -7,6 +7,15 @@ function onMouse(e: MouseEvent) {
   my.value = (e.clientY / window.innerHeight - 0.5) * 10
 }
 
+const rpgStats = [
+  { name: 'SEO',        val: 90, color: '#f97316' },
+  { name: 'Frontend',   val: 95, color: '#fb923c' },
+  { name: 'WordPress',  val: 92, color: '#f97316' },
+  { name: 'Shopify',    val: 88, color: '#fdba74' },
+]
+
+const abilities = ['TYPO3', 'WordPress', 'Shopify', 'Vue.js', 'KI-Tools', 'SEO']
+
 const statRefs = ref<HTMLElement[]>([])
 function pushStatRef(el: unknown) {
   if (el instanceof HTMLElement) statRefs.value.push(el)
@@ -98,57 +107,74 @@ onUnmounted(() => window.removeEventListener('mousemove', onMouse))
         :style="{ transform: `perspective(1200px) rotateY(${mx * 0.25}deg) rotateX(${-my * 0.25}deg)` }"
         aria-hidden="true"
       >
-        <!-- Main glass card -->
+        <!-- Main glass card — RPG Character Card -->
         <div class="main-card glass">
+          <!-- Character header -->
           <div class="mc-header">
             <div class="mc-avatar">
               <span>YA</span>
+              <div class="avatar-ring"></div>
             </div>
             <div class="mc-info">
+              <div class="mc-class-badge">WEB DEVELOPER</div>
               <span class="mc-name">Yusuf</span>
-              <span class="mc-title">Webentwickler · Ludwigsburg</span>
+              <span class="mc-title">Ludwigsburg · Germany</span>
             </div>
-            <div class="mc-status">
-              <span class="status-dot"></span>
-              <span>Online</span>
-            </div>
-          </div>
-
-          <div class="mc-divider"></div>
-
-          <div class="mc-skills">
-            <div class="skill-pill" v-for="s in ['TYPO3','WordPress','Shopify','Vue.js','SEO','KI-Tools']" :key="s">
-              {{ s }}
+            <div class="mc-level">
+              <span class="lvl-label">LVL</span>
+              <span class="lvl-num">10</span>
             </div>
           </div>
 
-          <div class="mc-cta glass-inner">
-            <span>📩 Bereit für Ihr Projekt</span>
-            <a href="#contact" class="btn btn-primary" style="padding:8px 18px;font-size:12px">
-              Anfragen
-            </a>
+          <!-- XP Bar -->
+          <div class="xp-section">
+            <div class="xp-label">
+              <span>XP</span>
+              <span>9.500 / 10.000</span>
+            </div>
+            <div class="xp-bar">
+              <div class="xp-fill"></div>
+            </div>
+          </div>
+
+          <!-- RPG Stats -->
+          <div class="rpg-stats">
+            <div class="rpg-stat" v-for="s in rpgStats" :key="s.name">
+              <span class="rs-name">{{ s.name }}</span>
+              <div class="rs-bar">
+                <div class="rs-fill" :style="{width: s.val+'%', background: s.color}"></div>
+              </div>
+              <span class="rs-val">{{ s.val }}</span>
+            </div>
+          </div>
+
+          <!-- Unlocked abilities -->
+          <div class="abilities">
+            <div class="ab-pill" v-for="ab in abilities" :key="ab">
+              <span class="ab-lock">✓</span> {{ ab }}
+            </div>
           </div>
         </div>
 
-        <!-- Floating mini-cards -->
+        <!-- Achievement floating cards -->
         <div class="mini-card glass float-1">
-          <span>🏆</span>
+          <span class="ach-icon">🏆</span>
           <div>
-            <b>10+ Jahre</b>
-            <small>Erfahrung</small>
+            <b>ACHIEVEMENT</b>
+            <small>10+ Jahre unlocked!</small>
           </div>
         </div>
         <div class="mini-card glass float-2">
-          <span>🚀</span>
+          <span class="ach-icon">&#x26A1;</span>
           <div>
-            <b>Speed 95+</b>
-            <small>Core Web Vitals</small>
+            <b>SPEED RUN</b>
+            <small>PageSpeed 95+</small>
           </div>
         </div>
         <div class="mini-card glass float-3">
-          <span>🤖</span>
+          <span class="ach-icon">🤖</span>
           <div>
-            <b>KI-Tools</b>
+            <b>AI POWERED</b>
             <small>ChatGPT · Claude</small>
           </div>
         </div>
@@ -399,4 +425,128 @@ onUnmounted(() => window.removeEventListener('mousemove', onMouse))
   .hero-stats { gap: 8px; }
   .stat { padding: 12px 16px; }
 }
+
+/* ── GAMING ELEMENTS ── */
+
+/* Avatar glow ring */
+.avatar-ring {
+  position: absolute; inset: -4px;
+  border-radius: 20px;
+  background: conic-gradient(var(--orange), #fdba74, var(--orange));
+  z-index: -1;
+  animation: ring-spin 3s linear infinite;
+  opacity: .7;
+}
+@keyframes ring-spin { to { transform: rotate(360deg); } }
+
+/* Class badge */
+.mc-class-badge {
+  font-family: var(--mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--orange);
+  background: rgba(249,115,22,.1);
+  border: 1px solid rgba(249,115,22,.25);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* Level badge */
+.mc-level {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--grad);
+  border-radius: 12px;
+  padding: 8px 14px;
+  min-width: 52px;
+}
+.lvl-label {
+  font-family: var(--mono);
+  font-size: 9px; font-weight: 700;
+  color: rgba(255,255,255,.8);
+  letter-spacing: .15em;
+}
+.lvl-num {
+  font-size: 24px; font-weight: 900;
+  color: #fff; line-height: 1;
+}
+
+/* XP Bar */
+.xp-section { margin: 16px 0; }
+.xp-label {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px; color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.xp-bar {
+  height: 7px;
+  background: rgba(0,0,0,.08);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.xp-fill {
+  height: 100%; width: 95%;
+  background: linear-gradient(90deg, #f97316, #fdba74, #f97316);
+  background-size: 200% 100%;
+  border-radius: 100px;
+  animation: xp-shine 2s linear infinite;
+}
+@keyframes xp-shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* RPG Stats */
+.rpg-stats { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
+.rpg-stat { display: flex; align-items: center; gap: 10px; }
+.rs-name {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .06em;
+  width: 72px; flex-shrink: 0;
+}
+.rs-bar {
+  flex: 1; height: 5px;
+  background: rgba(0,0,0,.07);
+  border-radius: 100px; overflow: hidden;
+}
+.rs-fill {
+  height: 100%; border-radius: 100px;
+  transition: width 1.4s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 6px currentColor;
+}
+.rs-val {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 700;
+  color: var(--orange); width: 26px; text-align: right;
+}
+
+/* Ability pills */
+.abilities { display: flex; flex-wrap: wrap; gap: 6px; }
+.ab-pill {
+  padding: 5px 12px; border-radius: 8px;
+  background: rgba(249,115,22,.07);
+  border: 1px solid rgba(249,115,22,.2);
+  font-size: 11px; font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: .03em;
+  transition: all .25s var(--ease-spring);
+  cursor: default;
+}
+.ab-pill:hover {
+  background: var(--orange); color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(249,115,22,.35);
+}
+.ab-lock { color: var(--green); margin-right: 2px; }
+
+/* Achievement card glow on hover */
+.mini-card:hover {
+  box-shadow: var(--glass-shadow-lg), 0 0 20px rgba(249,115,22,.2);
+  transform: translateY(-6px) scale(1.03);
+}
+.ach-icon { font-size: 1.4rem; }
 </style>
