@@ -67,16 +67,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   height: 60px;
   padding: 0 24px;
   border-radius: 100px;
-  background: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.65);
-  box-shadow: 0 4px 24px rgba(0,0,0,.07), inset 0 1px 0 rgba(255,255,255,.9);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.12);
   transition: all .4s var(--ease);
 }
 .nav-pill.scrolled {
-  background: rgba(255,255,255,0.75);
-  box-shadow: 0 8px 32px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.9);
+  background: rgba(20,14,44,0.75);
+  box-shadow: 0 8px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
 }
 
 .logo {
@@ -91,10 +91,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 .nav-links a {
   font-size: 14px; font-weight: 500;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.65);
   transition: color .2s;
 }
-.nav-links a:hover { color: var(--text); }
+.nav-links a:hover { color: rgba(255,255,255,0.95); }
 
 .nav-cta { padding: 9px 20px; font-size: 13px; }
 

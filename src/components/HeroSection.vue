@@ -209,19 +209,19 @@ onUnmounted(() => window.removeEventListener('mousemove', onMouse))
 .blob-1 {
   width: 700px; height: 700px;
   top: -180px; right: -150px;
-  background: radial-gradient(circle, rgba(249,115,22,.14) 0%, rgba(251,146,60,.06) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(249,115,22,.25) 0%, rgba(251,146,60,.1) 50%, transparent 70%);
   animation: blob-drift 12s ease-in-out infinite;
 }
 .blob-2 {
   width: 500px; height: 500px;
   bottom: -100px; left: -100px;
-  background: radial-gradient(circle, rgba(120,140,255,.10) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(120,80,255,.18) 0%, transparent 65%);
   animation: blob-drift 16s ease-in-out infinite reverse;
 }
 .blob-3 {
   width: 350px; height: 350px;
   top: 40%; left: 35%;
-  background: radial-gradient(circle, rgba(249,115,22,.06) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(249,115,22,.1) 0%, transparent 65%);
   animation: blob-drift 10s ease-in-out infinite 3s;
 }
 @keyframes blob-drift {
