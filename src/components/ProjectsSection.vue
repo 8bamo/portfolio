@@ -1,11 +1,24 @@
 <script setup lang="ts">
 const projects = [
   {
+    id: 'anderthalb-bar',
+    emoji: '🍹',
+    color: 'amber',
+    category: 'WordPress ⭐ Kundenreferenz',
+    num: '01',
+    title: 'anderthalbbar Stuttgart',
+    desc: 'WordPress-Website für eine Bar an der Königstraße Stuttgart. Editorial-Design mit Sidebar-Navigation, stimmungsvoller Fotografie, Event-Bereich und Kontaktformular.',
+    tags: ['WordPress', 'Editorial Design', 'Responsive', 'SEO'],
+    link: 'https://anderthalb-bar.de',
+    live: true,
+    featured: true,
+  },
+  {
     id: 'typo3-website',
     emoji: '🏢',
     color: 'indigo',
     category: 'CMS / TYPO3',
-    num: '01',
+    num: '02',
     title: 'Corporate Website TYPO3',
     desc: 'Barrierefreie, SEO-optimierte Unternehmenswebsite mit TYPO3, strukturierten Daten und schnellen Core Web Vitals. Optimiert für lokale Suchanfragen im Raum Stuttgart.',
     tags: ['TYPO3', 'SEO', 'Barrierefreiheit', 'Responsive'],
@@ -15,20 +28,19 @@ const projects = [
     id: 'shopify-store',
     emoji: '🛒',
     color: 'cyan',
-    category: 'E-Commerce ⭐ Featured',
-    num: '02',
+    category: 'E-Commerce',
+    num: '03',
     title: 'Shopify Online-Shop',
-    desc: 'Vollständig individualisierter Shopify-Shop mit Custom Theme, Produktfiltern, Checkout-Optimierung und Conversion-Tracking. Umsatzsteigerung durch UX-Verbesserungen.',
+    desc: 'Vollständig individualisierter Shopify-Shop mit Custom Theme, Produktfiltern, Checkout-Optimierung und Conversion-Tracking.',
     tags: ['Shopify', 'Liquid', 'JavaScript', 'CSS3'],
     link: 'https://github.com/8bamo',
-    featured: true,
   },
   {
     id: 'webflow-landing',
     emoji: '⚡',
     color: 'purple',
     category: 'Web Design',
-    num: '03',
+    num: '04',
     title: 'Webflow Landing Page',
     desc: 'Hochkonvertierende Landing Page in Webflow mit Micro-Animationen, A/B-Test-Struktur, mobilem Design und Page Speed Score 95+.',
     tags: ['Webflow', 'Figma', 'Animation', 'CRO'],
@@ -39,21 +51,10 @@ const projects = [
     emoji: '📰',
     color: 'green',
     category: 'WordPress',
-    num: '04',
+    num: '05',
     title: 'WordPress News-Portal',
     desc: 'Skalierbares News-Portal mit Custom Plugin-Entwicklung, SEO-Optimierung via Yoast, Schema-Markup und schnellem CDN-Caching.',
     tags: ['WordPress', 'PHP', 'MySQL', 'SEO'],
-    link: 'https://github.com/8bamo',
-  },
-  {
-    id: 'vue-webapp',
-    emoji: '🔧',
-    color: 'orange',
-    category: 'Vue.js / Frontend',
-    num: '05',
-    title: 'Vue.js Web-App',
-    desc: 'Komplexe Single-Page-Application mit Vue 3, TypeScript, Pinia State Management und REST-API-Integration. Vollständig responsiv und zugänglich.',
-    tags: ['Vue.js', 'TypeScript', 'Pinia', 'REST API'],
     link: 'https://github.com/8bamo',
   },
   {
@@ -63,13 +64,14 @@ const projects = [
     category: 'Portfolio',
     num: '06',
     title: 'Dieses Portfolio',
-    desc: 'Handcrafted Portfolio in Vue.js mit Particle-Canvas, Glassmorphism, Scroll-Animationen und vollständiger SEO-Optimierung für Ludwigsburg & Stuttgart.',
-    tags: ['Vue.js', 'TypeScript', 'SEO', 'Animation'],
+    desc: 'Handcrafted Portfolio in Vue.js mit CSS 3D, Kinetic Typography, Particle-Canvas und vollständiger SEO-Optimierung für Ludwigsburg & Stuttgart.',
+    tags: ['Vue.js', 'TypeScript', 'SEO', '3D CSS'],
     link: 'https://github.com/8bamo/portfolio',
   },
 ]
 
 const colorMap: Record<string, string> = {
+  amber:  'rgba(245,158,11',
   indigo: 'rgba(99,102,241',
   cyan:   'rgba(6,182,212',
   purple: 'rgba(168,85,247',
@@ -101,6 +103,10 @@ const colorMap: Record<string, string> = {
         >
           <div class="pc-image">
             <div class="pc-emoji" aria-hidden="true">{{ p.emoji }}</div>
+            <!-- Live badge -->
+            <div v-if="p.live" class="pc-live-badge">
+              <span class="live-dot"></span> Live
+            </div>
             <div class="pc-overlay">
               <div class="pc-tags-overlay">
                 <span v-for="tag in p.tags" :key="tag">{{ tag }}</span>
@@ -116,7 +122,7 @@ const colorMap: Record<string, string> = {
             <p class="pc-desc">{{ p.desc }}</p>
             <div class="pc-footer">
               <a :href="p.link" target="_blank" rel="noopener noreferrer" class="pc-link" :id="`proj-link-${p.id}`">
-                Mehr erfahren
+                {{ p.live ? 'Website ansehen' : 'Mehr erfahren' }}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
             </div>
@@ -149,19 +155,43 @@ const colorMap: Record<string, string> = {
 .project-card {
   border-radius: var(--radius);
   overflow: hidden;
-  transition: all .35s var(--ease);
+  transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
   display: flex;
   flex-direction: column;
+  will-change: transform;
 }
 .project-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) perspective(800px) rotateX(2deg);
   border-color: rgba(var(--accent-color), .4);
   box-shadow: 0 0 40px rgba(var(--accent-color), .15), var(--shadow-md);
 }
 .project-card.featured {
-  border-color: rgba(99,102,241,.3);
-  box-shadow: 0 0 30px rgba(99,102,241,.1);
+  border-color: rgba(245,158,11,.35);
+  box-shadow: 0 0 30px rgba(245,158,11,.12);
 }
+
+/* Live badge */
+.pc-live-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  background: rgba(34,197,94,.15);
+  border: 1px solid rgba(34,197,94,.35);
+  border-radius: 100px;
+  font-size: 11px; font-weight: 700;
+  color: #4ade80;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:.3; } }
 
 .pc-image {
   height: 180px;
