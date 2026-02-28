@@ -39,6 +39,14 @@ onMounted(() => {
             Ich beherrsche den kompletten Frontend-Stack: TYPO3, Shopify, WordPress,
             Webflow, Framer, Vue.js, TypeScript, Bootstrap und Tailwind CSS —
             immer mit Fokus auf <strong>SEO, Performance und Barrierefreiheit</strong>.
+            Zusätzlich setze ich gezielt <strong>KI-Tools</strong> wie ChatGPT, Claude
+            und GitHub Copilot ein, um Projekte schneller und smarter umzusetzen.
+          </p>
+          <p>
+            Neben Kundenprojekten betreibe ich meinen eigenen Online-Shop
+            <a href="https://mystu.shop" target="_blank" rel="noopener noreferrer" class="inline-link">
+              mystu.shop
+            </a> auf Shopify — als lebendiges Praxis-Beispiel meiner E-Commerce-Expertise.
           </p>
 
           <div class="about-highlights">
@@ -68,6 +76,13 @@ onMounted(() => {
               <div>
                 <strong>SEO-Optimierung</strong>
                 <span>Technisches & On-Page SEO</span>
+              </div>
+            </div>
+            <div class="highlight highlight--ai">
+              <span class="hl-icon">🤖</span>
+              <div>
+                <strong>KI-Tools Experte</strong>
+                <span>ChatGPT, Claude, Copilot, Midjourney</span>
               </div>
             </div>
           </div>
@@ -104,10 +119,11 @@ onMounted(() => {
     <span class="c-str">"TypeScript"</span>, <span class="c-str">"Vue.js"</span>,
     <span class="c-str">"Bootstrap"</span>, <span class="c-str">"Tailwind"</span>
   ],
-  <span class="c-key">extras</span>: [
-    <span class="c-str">"SEO"</span>, <span class="c-str">"Barrierefreiheit"</span>,
-    <span class="c-str">"Figma"</span>, <span class="c-str">"Responsive"</span>
+  <span class="c-key">ki_tools</span>: [
+    <span class="c-str">"ChatGPT"</span>, <span class="c-str">"Claude"</span>,
+    <span class="c-str">"Copilot"</span>, <span class="c-str">"Midjourney"</span>
   ],
+  <span class="c-key">shop</span>:      <span class="c-str">"mystu.shop 🛒"</span>,
   <span class="c-key">verfügbar</span>:<span class="c-str">"Ja ✅"</span>,
 };</code></pre>
           </div>
@@ -162,6 +178,19 @@ onMounted(() => {
 .highlight span { font-size: 12px; color: var(--text-muted); }
 
 .about-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.inline-link {
+  color: var(--primary-h);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(99,102,241,.4);
+  transition: border-color .2s, color .2s;
+}
+.inline-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.highlight--ai {
+  border-color: rgba(168,85,247,.25);
+  background: rgba(168,85,247,.06);
+}
 
 /* Code card */
 .about-card {

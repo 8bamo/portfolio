@@ -55,6 +55,17 @@ const categories = [
       { name: 'Performance Optimierung', pct: 88 },
     ],
   },
+  {
+    id: 'ai',
+    icon: '🤖',
+    title: 'KI-Tools & Automation',
+    skills: [
+      { name: 'ChatGPT / Claude', pct: 92 },
+      { name: 'GitHub Copilot', pct: 88 },
+      { name: 'Midjourney / DALL-E', pct: 82 },
+      { name: 'KI-gestützte Workflows', pct: 87 },
+    ],
+  },
 ]
 
 const techPills = [
@@ -62,6 +73,7 @@ const techPills = [
   'HTML5','CSS3','JavaScript','TypeScript','Vue.js',
   'Bootstrap','Tailwind CSS','Figma','SEO','Barrierefreiheit',
   'Responsive Design','Git',
+  'ChatGPT','Claude','Midjourney','GitHub Copilot','KI-Workflows',
 ]
 </script>
 
@@ -73,7 +85,7 @@ const techPills = [
         <h2 id="skills-heading" class="section-title">Mein Tech-Stack</h2>
         <p class="section-sub">
           Über 10 Jahre Erfahrung mit den wichtigsten Web-Technologien —
-          von klassischem CMS bis zu modernem Framework.
+          von klassischem CMS bis zu modernem Framework und KI-Tools.
         </p>
       </header>
 
@@ -126,7 +138,7 @@ const techPills = [
 }
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -197,8 +209,8 @@ const techPills = [
   transform: translateY(-2px) scale(1.04);
 }
 
-@media (max-width: 1024px) {
-  .skills-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1280px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .skills-grid { grid-template-columns: 1fr; }
