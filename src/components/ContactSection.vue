@@ -65,7 +65,7 @@ function handleSubmit() {
               </div>
               <div class="cc-body">
                 <span class="cc-label">LinkedIn</span>
-                <span class="cc-val">Yusuf Ahmed</span>
+                <span class="cc-val">Yusuf</span>
               </div>
             </a>
           </address>

@@ -5,7 +5,7 @@
         <div class="footer-grid">
           <div class="f-brand">
             <a href="#" class="f-logo" aria-label="Yusuf Ahmed – Webentwickler Ludwigsburg">
-              Yusuf Ahmed<span class="dot">.</span>
+              Yusuf<span class="dot">.</span>
             </a>
             <p class="f-tagline">
               Professionelle Webentwicklung aus Ludwigsburg.<br/>

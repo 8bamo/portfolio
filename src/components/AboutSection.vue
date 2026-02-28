@@ -26,7 +26,7 @@ onMounted(() => {
         <!-- Left: Text & Highlights -->
         <div class="about-text reveal">
           <p class="about-lead">
-            Ich bin <strong>Yusuf Ahmed</strong>, Webentwickler aus
+            Ich bin <strong>Yusuf</strong>, Webentwickler aus
             <strong>Ludwigsburg</strong> — mit über <strong>10 Jahren Erfahrung</strong>
             in der professionellen Web-Entwicklung.
           </p>

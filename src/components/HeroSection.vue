@@ -65,7 +65,7 @@ onUnmounted(() => {
         <!-- Editorial headline -->
         <h1 class="hero-title">
           <span class="line-sm">Hallo, ich bin</span>
-          <span class="line-name">Yusuf<br>Ahmed</span>
+        <span class="line-name">Yusuf.</span>
           <span class="line-role">
             <span class="role-accent">Webentwickler</span> aus<br>
             Ludwigsburg
