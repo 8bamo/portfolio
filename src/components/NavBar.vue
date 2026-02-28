@@ -67,9 +67,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   transition: background .3s, border-color .3s, backdrop-filter .3s;
 }
 #navbar.scrolled {
-  background: rgba(8,8,8,.92);
-  border-bottom: 1px solid var(--border-light);
-  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
 }
 
 .nav-inner {
@@ -129,8 +130,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 /* Mobile menu */
 .mobile-menu {
   display: none;
-  background: var(--surface);
-  border-top: 1px solid var(--border-light);
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
   padding: 24px;
 }
 .mobile-menu.open { display: block; }

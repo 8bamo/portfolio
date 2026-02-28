@@ -189,13 +189,13 @@ onUnmounted(() => {
 .bg-glow-1 {
   width: 600px; height: 600px;
   right: -100px; top: -150px;
-  background: radial-gradient(circle, rgba(249,115,22,.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249,115,22,.08) 0%, transparent 70%);
   animation: glow-pulse 8s ease-in-out infinite;
 }
 .bg-glow-2 {
   width: 400px; height: 400px;
   left: 5%; bottom: 10%;
-  background: radial-gradient(circle, rgba(249,115,22,.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249,115,22,.05) 0%, transparent 70%);
   animation: glow-pulse 12s ease-in-out infinite reverse;
 }
 @keyframes glow-pulse {
@@ -208,8 +208,8 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
 }
@@ -327,14 +327,14 @@ onUnmounted(() => {
 }
 
 .showcase-card {
-  background: var(--surface-2);
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.1);
   border-top: 2px solid var(--orange);
   border-radius: 8px;
   padding: 40px 36px;
   width: 100%;
   max-width: 340px;
-  box-shadow: 0 32px 80px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.04);
+  box-shadow: 0 24px 64px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.04);
   position: relative;
   z-index: 2;
 }
@@ -378,12 +378,12 @@ onUnmounted(() => {
 }
 .sc-skills span {
   padding: 4px 10px;
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(0,0,0,.1);
   border-radius: 2px;
   font-size: 11px; font-weight: 600;
   color: var(--text-muted);
   letter-spacing: .04em;
-  background: rgba(255,255,255,.03);
+  background: var(--surface);
 }
 
 /* Accent floating cards */
@@ -391,10 +391,10 @@ onUnmounted(() => {
   position: absolute;
   display: flex; align-items: center; gap: 12px;
   padding: 12px 18px;
-  background: var(--surface);
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.1);
   border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  box-shadow: 0 8px 32px rgba(0,0,0,.1);
   white-space: nowrap;
   animation: acc-float 5s ease-in-out infinite;
 }
@@ -417,10 +417,10 @@ onUnmounted(() => {
 }
 .location-tags span {
   padding: 5px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0,0,0,.1);
   border-radius: 100px;
   font-size: 11px; color: var(--text-muted);
-  background: var(--surface);
+  background: #ffffff;
   white-space: nowrap;
 }
 

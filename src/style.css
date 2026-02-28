@@ -1,39 +1,39 @@
 /* ──────────────────────────────────────────────
    PREMIUM DESIGN SYSTEM – Yusuf Ahmed 2026
-   Palette: Schwarz · Weiß · Orange
+   Palette: Weiß · Schwarz · Orange
 ────────────────────────────────────────────── */
 
 :root {
-  /* Backgrounds */
-  --bg: #080808;
-  --bg-alt: #0e0e0e;
-  --surface: #121212;
-  --surface-2: #181818;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-light: rgba(255, 255, 255, 0.13);
+  /* Backgrounds — hell & seriös */
+  --bg: #ffffff;
+  --bg-alt: #f7f7f7;
+  --surface: #f2f2f2;
+  --surface-2: #eaeaea;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.14);
 
   /* Orange accent */
   --orange: #f97316;
   --orange-light: #fb923c;
   --orange-dark: #c2570d;
-  --orange-glow: rgba(249, 115, 22, 0.18);
+  --orange-glow: rgba(249, 115, 22, 0.12);
 
-  /* Legacy compat (components use --primary / --accent) */
+  /* Legacy compat */
   --primary: #f97316;
   --primary-h: #fb923c;
   --accent: #f97316;
   --secondary: #fb923c;
-  --green: #4caf6e;
-  --border-glow: rgba(249, 115, 22, 0.35);
+  --green: #16a34a;
+  --border-glow: rgba(249, 115, 22, 0.3);
 
   /* Text */
-  --text: #ffffff;
-  --text-muted: #a0a0a0;
-  --text-dim: #555555;
+  --text: #111111;
+  --text-muted: #555555;
+  --text-dim: #aaaaaa;
 
   /* Gradients */
   --grad: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
-  --grad-card: linear-gradient(135deg, rgba(249, 115, 22, .08) 0%, rgba(251, 146, 60, .04) 100%);
+  --grad-card: linear-gradient(135deg, rgba(249, 115, 22, .06) 0%, rgba(251, 146, 60, .03) 100%);
 
   /* Shape */
   --radius: 4px;
@@ -42,9 +42,9 @@
   --radius-xl: 12px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 20px rgba(0, 0, 0, .6);
-  --shadow-md: 0 8px 48px rgba(0, 0, 0, .8);
-  --shadow-glow: 0 0 60px rgba(249, 115, 22, .15);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, .08);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, .12);
+  --shadow-glow: 0 0 40px rgba(249, 115, 22, .1);
 
   /* Motion */
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -81,8 +81,8 @@ body {
 }
 
 ::selection {
-  background: rgba(249, 115, 22, .3);
-  color: #fff;
+  background: rgba(249, 115, 22, .2);
+  color: var(--text);
 }
 
 a {
@@ -105,7 +105,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--orange-dark);
+  background: var(--orange);
   border-radius: 2px;
 }
 
@@ -189,12 +189,12 @@ img {
 .btn-primary:hover {
   background: var(--orange-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(249, 115, 22, .4);
+  box-shadow: 0 10px 32px rgba(249, 115, 22, .3);
 }
 
 .btn-secondary {
   background: transparent;
-  border: 1px solid var(--border-light);
+  border: 1.5px solid var(--border-light);
   color: var(--text);
 }
 
@@ -206,7 +206,7 @@ img {
 
 .btn-outline {
   background: transparent;
-  border: 1px solid rgba(249, 115, 22, .5);
+  border: 1.5px solid rgba(249, 115, 22, .5);
   color: var(--orange);
 }
 
@@ -214,7 +214,6 @@ img {
   background: var(--orange);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(249, 115, 22, .35);
 }
 
 .btn-full {
@@ -222,7 +221,7 @@ img {
   justify-content: center;
 }
 
-/* ── ORANGE DIVIDER LINE ── */
+/* ── DIVIDER ── */
 .orange-line {
   width: 40px;
   height: 2px;
