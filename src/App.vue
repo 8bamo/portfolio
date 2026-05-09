@@ -86,28 +86,28 @@ const process = [
 
 const faqs = [
   {
-    q: 'Was kostet eine Website beim Freelancer?',
-    a: 'Der Preis hängt vom Umfang ab. Eine professionelle Unternehmenswebsite liegt typischerweise zwischen 2.000 und 8.000 €. Shopify-Shops oder komplexere Frontends können darüber liegen. Ich kalkuliere transparent nach Aufwand – kein verstecktes Agentur-Overhead.',
+    q: 'Bist du als Webentwickler auch persönlich in Ludwigsburg und Stuttgart erreichbar?',
+    a: 'Ja. Ich bin in Ludwigsburg ansässig und treffe Kunden aus der Region regelmäßig persönlich – in Ludwigsburg, Stuttgart, Heilbronn oder wo es passt. Kurze Wege, direkte Kommunikation, kein Ticketsystem.',
   },
   {
-    q: 'Wie lange dauert die Entwicklung einer Website?',
-    a: 'Eine einfache Website mit 5–8 Seiten ist in 3–5 Wochen fertig. Ein größerer Relaunch oder ein individueller Shop braucht 6–10 Wochen. Ich plane realistisch und halte Deadlines ein.',
+    q: 'Für welche Unternehmen in der Region Stuttgart arbeitest du?',
+    a: 'Ich arbeite mit Handwerksbetrieben, Dienstleistern, Gastronomie, Kanzleien, Immobilienunternehmen und lokalen Marken aus dem Großraum Stuttgart und Ludwigsburg. Ob Einzelunternehmer oder mittelständisches Unternehmen – Hauptsache, der Auftritt soll wirklich etwas bringen.',
   },
   {
-    q: 'Welche CMS-Systeme verwendest du?',
-    a: 'Ich arbeite mit WordPress, TYPO3, Shopify, Webflow und Framer – je nachdem, was für dein Projekt und dein Team am sinnvollsten ist. Du kannst Inhalte nach dem Launch selbst pflegen, ohne Entwickler-Wissen.',
+    q: 'Was kostet eine neue Website für ein lokales Unternehmen aus Ludwigsburg oder Stuttgart?',
+    a: 'Eine professionelle Unternehmenswebsite liegt je nach Umfang zwischen 2.000 und 8.000 €. Shopify-Shops oder individuelle Lösungen können darüber liegen. Ich kalkuliere transparent – kein Agentur-Overhead, kein Stundensatz-Roulette.',
   },
   {
-    q: 'Arbeitest du auch remote oder nur vor Ort?',
-    a: 'Beides ist möglich. Ich bin in Ludwigsburg ansässig und arbeite regelmäßig mit Kunden aus Stuttgart und der Region – remote funktioniert aber genauso gut. Die meisten Projekte laufen vollständig remote über Calls und geteilte Tools.',
+    q: 'Hilfst du auch bei lokaler Sichtbarkeit und SEO für Stuttgart und Umgebung?',
+    a: 'Ja, lokale Sichtbarkeit ist ein fester Bestandteil meiner Arbeit. Ich optimiere Websites technisch für lokale Suchanfragen wie „Webentwickler Ludwigsburg" oder „Webdesign Stuttgart" – mit sauberem Code, strukturierten Daten und klarer Seitenstruktur.',
   },
   {
-    q: 'Bietest du nach dem Launch auch Wartung und Support an?',
-    a: 'Ja. Ich begleite Projekte auch nach dem Launch: Updates, Sicherheits-Patches, Erweiterungen oder neue Unterseiten. Viele Kunden arbeiten langfristig mit mir zusammen, anstatt jedes Mal von vorne anzufangen.',
+    q: 'Wie läuft ein Projekt mit dir ab, wenn ich aus der Region bin?',
+    a: 'Wir starten mit einem kurzen Kennenlern-Call oder Treffen vor Ort. Dann kläre ich Ziele, Inhalte und Budget – ohne Fragebogen-Bürokratie. Die Umsetzung läuft strukturiert in Phasen, du siehst den Fortschritt laufend und kannst jederzeit Feedback geben.',
   },
   {
-    q: 'Übernimmst du auch bestehende Websites zur Weiterentwicklung?',
-    a: 'Ja, das ist ein großer Teil meiner Arbeit. Ich schaue mir bestehende Projekte an, analysiere Code-Qualität und Performance, und entwickle gezielt weiter – ohne unnötigen Komplettumbau.',
+    q: 'Betreust du Projekte auch nach dem Launch weiter?',
+    a: 'Ja. Viele meiner Kunden aus Ludwigsburg und Stuttgart arbeiten langfristig mit mir zusammen – für Updates, neue Unterseiten, SEO-Maßnahmen oder Erweiterungen. Kein Übergabe-Chaos, kein Neustart.',
   },
 ]
 
