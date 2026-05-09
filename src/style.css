@@ -3,7 +3,8 @@
 :root {
   --color-midnight-navy: #1b2540;
   --color-deep-cosmos: #001033;
-  --color-chartreuse-pulse: #d0f100;
+  --color-cta: #1a56f5;
+  --gradient-cta: linear-gradient(135deg, #1a56f5 0%, #38b6ff 100%);
   --color-ice-veil: #e0f6ff;
   --color-ghost-canvas: #f8f9fc;
   --color-pure-surface: #ffffff;
@@ -97,8 +98,8 @@ textarea {
   z-index: 50;
   padding: 8px 16px;
   border-radius: 9999px;
-  background: var(--color-chartreuse-pulse);
-  color: var(--color-midnight-navy);
+  background-image: var(--gradient-cta);
+  color: #ffffff;
   transition: top 0.2s ease;
 }
 
@@ -156,7 +157,7 @@ textarea {
   color: #fafeff;
 }
 
-/* nav CTA — chartreuse pill */
+/* nav CTA — blue gradient pill */
 .nav-cta {
   flex: 0 0 auto;
   display: inline-flex;
@@ -165,14 +166,15 @@ textarea {
   padding: 0 16px;
   height: 36px;
   border-radius: 9999px;
-  background: var(--color-chartreuse-pulse);
-  color: var(--color-midnight-navy);
+  background-color: var(--color-cta);
+  background-image: var(--gradient-cta);
+  color: #ffffff;
   font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: -0.015em;
   white-space: nowrap;
   border: none;
-  box-shadow: var(--shadow-chartreuse-btn);
+  box-shadow: rgba(26, 86, 245, 0.35) 0px 4px 14px 0px;
   transition: opacity 0.15s ease;
 }
 
@@ -265,11 +267,13 @@ textarea {
   transition: opacity 0.15s ease;
 }
 
-/* primary — chartreuse, works on both dark and light */
+/* primary — blue gradient, works on both dark and light */
 .button-primary {
-  background: var(--color-chartreuse-pulse);
-  color: var(--color-midnight-navy);
-  box-shadow: var(--shadow-chartreuse-btn);
+  background-color: var(--color-cta);
+  background-image: var(--gradient-cta);
+  color: #ffffff;
+  box-shadow: rgba(26, 86, 245, 0.35) 0px 4px 14px 0px,
+    rgba(26, 86, 245, 0.18) 0px 1px 3px 0px;
 }
 
 .button-primary:hover {
