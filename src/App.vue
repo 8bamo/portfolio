@@ -167,16 +167,18 @@ onUnmounted(() => {
     </header>
 
     <main>
-      <section id="home" class="hero section">
-        <div class="container hero-grid">
+      <!-- Hero: full-viewport centered, dark gradient -->
+      <section id="home" class="hero">
+        <div class="container">
           <div class="hero-copy" data-reveal>
-            <p class="eyebrow">Freelance Web Development · Ludwigsburg / Stuttgart</p>
+            <p class="hero-eyebrow">Freelance Web Development · Ludwigsburg / Stuttgart</p>
             <h1>
-              Websites und digitale Auftritte,
-              <span>die klarer wirken und besser arbeiten.</span>
+              Websites, die<br>
+              klarer wirken und<br>
+              besser arbeiten.
             </h1>
             <p class="hero-text">
-              Ich konzipiere und entwickle Websites, Shops und Frontends fur Unternehmen,
+              Ich konzipiere und entwickle Websites, Shops und Frontends für Unternehmen,
               die nicht beliebig aussehen wollen. Fokus auf Struktur, Performance und
               einen Auftritt, der Vertrauen aufbaut.
             </p>
@@ -186,33 +188,35 @@ onUnmounted(() => {
                 href="https://www.linkedin.com/in/yusuf-ahmed-lb/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button button-secondary"
+                class="button button-ghost-dark"
               >
                 LinkedIn
               </a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="hero-panel" data-reveal>
-            <div class="hero-card">
-              <p class="panel-kicker">Verfügbar für</p>
-              <ul class="panel-list">
-                <li>Corporate Websites</li>
-                <li>Shopify und WordPress Relaunches</li>
-                <li>Landingpages mit SEO-Fokus</li>
-                <li>Vue Frontends und UI-Refactors</li>
-              </ul>
-            </div>
-
-            <div class="metric-strip">
-              <div v-for="metric in metrics" :key="metric.label" class="metric">
-                <strong>{{ metric.value }}</strong>
-                <span>{{ metric.label }}</span>
-              </div>
+      <!-- Stats strip: floats between hero and about -->
+      <div class="stats-strip">
+        <div class="container stats-grid">
+          <div class="hero-card" data-reveal>
+            <p class="panel-kicker">Verfügbar für</p>
+            <ul class="panel-list">
+              <li>Corporate Websites</li>
+              <li>Shopify und WordPress Relaunches</li>
+              <li>Landingpages mit SEO-Fokus</li>
+              <li>Vue Frontends und UI-Refactors</li>
+            </ul>
+          </div>
+          <div class="metric-strip" data-reveal>
+            <div v-for="metric in metrics" :key="metric.label" class="metric">
+              <strong>{{ metric.value }}</strong>
+              <span>{{ metric.label }}</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <section id="about" class="section">
         <div class="container intro-grid">

@@ -275,18 +275,6 @@ textarea {
   opacity: 0.88;
 }
 
-/* secondary on dark hero — dark ghost */
-.hero .button-secondary {
-  background: transparent;
-  color: #fafeff;
-  border: 1px solid var(--color-ice-veil);
-  box-shadow: var(--shadow-dark-ghost-btn);
-}
-
-.hero .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
 /* secondary on light surface — light ghost */
 .button-secondary {
   background: var(--color-pure-surface);
@@ -298,56 +286,87 @@ textarea {
   opacity: 0.88;
 }
 
-/* ─── Hero (dark) ───────────────────────────── */
+/* ─── Hero (dark, full viewport) ────────────── */
 
 .hero {
   background: var(--gradient-hero);
-  padding-top: 80px;
-  padding-bottom: 120px;
-  text-align: center;
-}
-
-.hero-grid {
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 56px;
+  text-align: center;
+  padding: 120px 0 80px;
 }
 
 .hero-copy {
-  max-width: 760px;
-  padding-top: 0;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.hero .eyebrow {
-  color: rgba(224, 246, 255, 0.72);
+.hero-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.013em;
+  color: rgba(224, 246, 255, 0.6);
+  margin: 0 0 20px;
+  text-transform: uppercase;
 }
 
 .hero h1 {
   color: #fafeff;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.04;
 }
 
 .hero h1 span {
-  color: rgba(224, 246, 255, 0.88);
+  color: #fafeff;
 }
 
 .hero .hero-text {
-  color: rgba(224, 246, 255, 0.72);
-  margin: 18px auto 0;
-  max-width: 520px;
+  color: rgba(224, 246, 255, 0.65);
+  margin: 20px auto 0;
+  max-width: 480px;
+  font-size: 1.0625rem;
 }
 
 .hero-actions {
-  margin-top: 32px;
+  margin-top: 36px;
   justify-content: center;
 }
 
-.hero-panel {
+/* dark ghost — hero only */
+.button-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  height: 44px;
+  padding: 0 24px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  cursor: pointer;
+  background: transparent;
+  color: #fafeff;
+  border: 1px solid var(--color-ice-veil);
+  box-shadow: var(--shadow-dark-ghost-btn);
+  transition: background-color 0.15s ease;
+}
+
+.button-ghost-dark:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Stats strip (between hero and about) ─── */
+
+.stats-strip {
+  background: var(--color-ghost-canvas);
+  padding: 48px 0;
+}
+
+.stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  width: 100%;
-  max-width: 860px;
 }
 
 /* ─── Sections (light) ──────────────────────── */
@@ -821,11 +840,11 @@ h1 span {
   }
 
   .hero {
-    padding-top: 48px;
-    padding-bottom: 80px;
+    padding: 100px 0 60px;
+    min-height: 90svh;
   }
 
-  .hero-panel {
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 
