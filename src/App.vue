@@ -310,19 +310,10 @@ onUnmounted(() => {
           </div>
 
           <div class="contact-card" data-reveal>
-            <a href="mailto:yusuf_ahmed@gmx.de" class="contact-line">yusuf_ahmed@gmx.de</a>
-            <p>Ludwigsburg, Baden-Wurttemberg · remote und vor Ort</p>
+            <p>Ludwigsburg, Baden-Württemberg · remote und vor Ort</p>
             <div class="contact-actions">
               <a href="mailto:yusuf_ahmed@gmx.de?subject=Projektanfrage" class="button button-primary">
-                E-Mail schreiben
-              </a>
-              <a
-                href="https://github.com/8bamo"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-secondary"
-              >
-                GitHub
+                Projekt anfragen
               </a>
             </div>
           </div>
