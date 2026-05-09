@@ -12,6 +12,7 @@
   --color-fog-border: #b1b5c0;
 
   --gradient-hero: linear-gradient(180deg, #001033 0%, #0050f8 55%, #5fbdf7 100%);
+  /* Note: use background-image directly on .hero, not via var() */
 
   --shadow-card: rgba(0, 39, 80, 0.03) 0px 56px 72px -16px,
     rgba(0, 39, 80, 0.03) 0px 32px 32px -16px,
@@ -289,7 +290,9 @@ textarea {
 /* ─── Hero (dark, full viewport) ────────────── */
 
 .hero {
-  background: var(--gradient-hero);
+  background-color: #001033;
+  background-image: linear-gradient(180deg, #001033 0%, #0050f8 55%, #5fbdf7 100%);
+  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   align-items: center;
