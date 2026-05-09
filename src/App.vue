@@ -195,7 +195,7 @@ onUnmounted(() => {
 
           <div class="hero-panel" data-reveal>
             <div class="hero-card">
-              <p class="panel-kicker">Verfugbar fur</p>
+              <p class="panel-kicker">Verfügbar für</p>
               <ul class="panel-list">
                 <li>Corporate Websites</li>
                 <li>Shopify und WordPress Relaunches</li>
@@ -214,7 +214,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="about" class="section">
+      <section id="about" class="section section-snow">
         <div class="container intro-grid">
           <div data-reveal>
             <p class="section-label">Profil</p>
@@ -244,7 +244,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="work" class="section section-muted">
+      <section id="work" class="section">
         <div class="container section-head" data-reveal>
           <p class="section-label">Ausgewahlte Arbeiten</p>
           <h2 class="section-title">Drei Projekte, die Stil, Struktur und praktische Umsetzung zeigen.</h2>
@@ -273,7 +273,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="stack" class="section">
+      <section id="stack" class="section section-snow">
         <div class="container stack-grid">
           <div class="stack-copy" data-reveal>
             <p class="section-label">Stack und Ablauf</p>
