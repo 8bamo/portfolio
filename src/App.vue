@@ -214,7 +214,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="about" class="section section-snow">
+      <section id="about" class="section">
         <div class="container intro-grid">
           <div data-reveal>
             <p class="section-label">Profil</p>
@@ -273,7 +273,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="stack" class="section section-snow">
+      <section id="stack" class="section">
         <div class="container stack-grid">
           <div class="stack-copy" data-reveal>
             <p class="section-label">Stack und Ablauf</p>
