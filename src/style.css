@@ -719,6 +719,72 @@ h1 span {
   letter-spacing: 0;
 }
 
+/* ─── FAQ ───────────────────────────────────── */
+
+.faq-head {
+  margin-bottom: 32px;
+}
+
+.faq-list {
+  background: var(--color-pure-surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  max-width: 780px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(177, 181, 192, 0.25);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-midnight-navy);
+  letter-spacing: -0.016em;
+  transition: background-color 0.15s ease;
+}
+
+.faq-trigger:hover {
+  background: var(--color-ghost-canvas);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  color: var(--color-slate-ink);
+  transition: transform 0.25s ease;
+}
+
+.faq-item--open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-body {
+  padding: 0 28px 22px;
+}
+
+.faq-body p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-slate-ink);
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
 /* ─── Contact ───────────────────────────────── */
 
 .contact-section {

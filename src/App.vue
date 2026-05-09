@@ -84,6 +84,39 @@ const process = [
   'Launch, Feinschliff und Weiterentwicklung begleiten',
 ]
 
+const faqs = [
+  {
+    q: 'Was kostet eine Website beim Freelancer?',
+    a: 'Der Preis hängt vom Umfang ab. Eine professionelle Unternehmenswebsite liegt typischerweise zwischen 2.000 und 8.000 €. Shopify-Shops oder komplexere Frontends können darüber liegen. Ich kalkuliere transparent nach Aufwand – kein verstecktes Agentur-Overhead.',
+  },
+  {
+    q: 'Wie lange dauert die Entwicklung einer Website?',
+    a: 'Eine einfache Website mit 5–8 Seiten ist in 3–5 Wochen fertig. Ein größerer Relaunch oder ein individueller Shop braucht 6–10 Wochen. Ich plane realistisch und halte Deadlines ein.',
+  },
+  {
+    q: 'Welche CMS-Systeme verwendest du?',
+    a: 'Ich arbeite mit WordPress, TYPO3, Shopify, Webflow und Framer – je nachdem, was für dein Projekt und dein Team am sinnvollsten ist. Du kannst Inhalte nach dem Launch selbst pflegen, ohne Entwickler-Wissen.',
+  },
+  {
+    q: 'Arbeitest du auch remote oder nur vor Ort?',
+    a: 'Beides ist möglich. Ich bin in Ludwigsburg ansässig und arbeite regelmäßig mit Kunden aus Stuttgart und der Region – remote funktioniert aber genauso gut. Die meisten Projekte laufen vollständig remote über Calls und geteilte Tools.',
+  },
+  {
+    q: 'Bietest du nach dem Launch auch Wartung und Support an?',
+    a: 'Ja. Ich begleite Projekte auch nach dem Launch: Updates, Sicherheits-Patches, Erweiterungen oder neue Unterseiten. Viele Kunden arbeiten langfristig mit mir zusammen, anstatt jedes Mal von vorne anzufangen.',
+  },
+  {
+    q: 'Übernimmst du auch bestehende Websites zur Weiterentwicklung?',
+    a: 'Ja, das ist ein großer Teil meiner Arbeit. Ich schaue mir bestehende Projekte an, analysiere Code-Qualität und Performance, und entwickle gezielt weiter – ohne unnötigen Komplettumbau.',
+  },
+]
+
+const openFaq = ref<number | null>(null)
+
+function toggleFaq(index: number) {
+  openFaq.value = openFaq.value === index ? null : index
+}
+
 let observer: IntersectionObserver | null = null
 
 function updateActiveSection() {
@@ -294,6 +327,34 @@ onUnmounted(() => {
                 <li v-for="item in group.items" :key="item">{{ item }}</li>
               </ul>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <div class="container">
+          <div class="faq-head" data-reveal>
+            <p class="section-label">FAQ</p>
+            <h2 class="section-title">Häufige Fragen</h2>
+          </div>
+          <div class="faq-list" data-reveal>
+            <div
+              v-for="(item, i) in faqs"
+              :key="i"
+              class="faq-item"
+              :class="{ 'faq-item--open': openFaq === i }"
+            >
+              <button class="faq-trigger" @click="toggleFaq(i)" :aria-expanded="openFaq === i">
+                <span>{{ item.q }}</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-body" v-show="openFaq === i">
+                <p>{{ item.a }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
